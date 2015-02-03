@@ -111,16 +111,16 @@ S = do ->
   ]
 
   prev = 1
+  rand = 1
   canv = document.getElementById('awe-can')
   el = document.getElementById('awe-sel')
 
   _next = ->
     el.className = "animated fadeInUp"
-
     rword = _getWord()
     el.innerHTML = rword
     document.location.hash = rword;
-    rand = 1
+
     while prev == rand
       rand = Math.floor(Math.random() * 8)
     canv.className = "page c#{rand+1}"

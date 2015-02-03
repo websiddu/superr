@@ -403,8 +403,8 @@ module.exports = function (grunt) {
         'coffee',
         'sass',
         'copy:styles',
-        'imagemin',
-        'svgmin'
+        'imagemin'
+        //'svgmin'
       ]
     }
   });
@@ -460,8 +460,8 @@ module.exports = function (grunt) {
     'copy:dist',
     'modernizr',
     'rev',
-    'usemin',
-    'htmlmin'
+    'usemin'
+    //'htmlmin'
   ]);
 
   grunt.registerTask('deploy', 'Deploy to Github Pages', ['build', 'buildcontrol']);
