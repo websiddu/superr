@@ -119,7 +119,6 @@ S = do ->
   hash = document.location.hash.replace(/#/g, "")
 
   _pageLoad = ->
-    console.log hash
     if hash is ''
       _next(_getWord())
     else
@@ -153,6 +152,21 @@ S = do ->
     window.addEventListener("keyup", _checkKeyPressed, false)
     input.addEventListener('click', _selectAllText, false)
     shareurl.addEventListener('click', _showLink, false)
+    canv.addEventListener('click', _handleClick, false)
+
+
+  _removeClasses = ->
+    el.className = ""
+    if (canv.classList)
+      canv.classList.add("o0");
+    else
+      canv.className += " " + "animate";
+
+  _handleClick = ->
+    _removeClasses()
+    setTimeout ->
+      _next(_getWord())
+    , 100
 
   _showLink = ->
     input.className = "textfield active"
@@ -164,11 +178,7 @@ S = do ->
   _checkDownKeyPressed = (e) ->
     k = e.keyCode
     if k in [37, 38, 39, 40]
-      el.className = ""
-      if (canv.classList)
-        canv.classList.add("o0");
-      else
-        canv.className += " " + "animate";
+      _removeClasses()
 
   _checkKeyPressed = (e) ->
     k = e.keyCode

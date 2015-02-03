@@ -64,12 +64,10 @@ body {
   opacity: 1;
   -webkit-transition: all 0.2s;
   transition: all 0.2s ease-in;
-
   &.o0 {
     opacity: 0.6;
     transition: all 0.2s ease-out;
   }
-
   &.c1 {
     background: linear-gradient(to right, $c11, $c12);
   }
@@ -102,11 +100,36 @@ h1 {
   text-align: center;
   margin: auto;
   position: absolute;
-  top: 0; left: 0; bottom: 0; right: 0;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
   height: 120px;
   line-height: 120px;
   color: #fff;
+  -webkit-transition: all 0.2s;
+  transition: all 0.2s ease-in;
 }
+
+@media only screen and (max-width: 768px) {
+  h1 {
+    font-size: 100px;
+  }
+}
+
+@media only screen and (max-width: 428px) {
+  h1 {
+    font-size: 80px;
+  }
+}
+
+@media only screen and (max-width: 320px) {
+  h1 {
+    font-size: 60px;
+  }
+}
+
+
 
 .footer {
   position: fixed;
@@ -136,6 +159,7 @@ h1 {
   position: absolute;
   right: 40px;
 }
+
 .textfield {
   border: none;
   background: transparent;
