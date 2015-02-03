@@ -114,21 +114,32 @@ S = do ->
   rand = 1
   canv = document.getElementById('awe-can')
   el = document.getElementById('awe-sel')
+  input = document.getElementById('copyurl')
+  shareurl = document.getElementById('shareurl')
 
   _next = ->
     el.className = "animated fadeInUp"
     rword = _getWord()
     el.innerHTML = rword
-    document.location.hash = rword;
 
     while prev == rand
       rand = Math.floor(Math.random() * 8)
     canv.className = "page c#{rand+1}"
     prev = rand
+    _updateUrls(rword)
 
   _bindEvents = ->
     window.addEventListener("keydown", _checkDownKeyPressed, false)
     window.addEventListener("keyup", _checkKeyPressed, false)
+    input.addEventListener('click', _selectAllText, false)
+    shareurl.addEventListener('click', _showLink, false)
+
+  _showLink = ->
+    input.className = "textfield active"
+    input.select()
+
+  _selectAllText = (e) ->
+    this.select()
 
   _checkDownKeyPressed = (e) ->
     k = e.keyCode
@@ -143,6 +154,15 @@ S = do ->
     k = e.keyCode
     if k in [37, 38, 39, 40]
       _next()
+
+  _updateUrls = (rword) ->
+    twitter = document.getElementById('twitter')
+
+    twitterUrl = "https://twitter.com/intent/tweet?original_referer=#{encodeURIComponent(document.URL)}&text=#{twitter.dataset.text}&tw_p=tweetbutton&url=#{encodeURIComponent(document.URL)}&via=#{twitter.dataset.via}"
+    twitter.href = twitterUrl
+    document.location.hash = rword;
+    document.title = rword;
+    input.value = document.URL
 
   _getWord = ->
     return words[Math.floor(Math.random() * words.length)]

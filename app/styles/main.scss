@@ -118,6 +118,10 @@ h1 {
   vertical-align: middle;
   line-height: 40px;
   text-align: right;
+  z-index: 3;
+  a {
+    vertical-align: middle;
+  }
 }
 
 .key {
@@ -125,4 +129,34 @@ h1 {
   bottom: 0;
   left: 40px;
   opacity: 0.2;
+}
+
+.sharing-caring {
+  z-index: 3;
+  position: absolute;
+  right: 40px;
+}
+.textfield {
+  border: none;
+  background: transparent;
+  font-family: "Source Sans Pro", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-size: 14px;
+  color: #eee;
+  text-align: right;
+  padding: 0;
+  width: 240px;
+  position: absolute;
+  right: 50px;
+  line-height: 40px;
+  bottom: 0;
+  opacity: 0;
+  -webkit-transition: all 0.2s;
+  transition: all 0.2s ease-in;
+  &:focus {
+    outline: 0;
+  }
+  &.active {
+    opacity: 1;
+    right: 130px;
+  }
 }
