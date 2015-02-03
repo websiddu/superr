@@ -116,17 +116,37 @@ S = do ->
   el = document.getElementById('awe-sel')
   input = document.getElementById('copyurl')
   shareurl = document.getElementById('shareurl')
+  hash = document.location.hash.replace(/#/g, "")
 
-  _next = ->
+  _pageLoad = ->
+    console.log hash
+    if hash is ''
+      _next(_getWord())
+    else
+      _loadFromHash()
+
+
+  _next = (rword) ->
     el.className = "animated fadeInUp"
-    rword = _getWord()
     el.innerHTML = rword
-
     while prev == rand
       rand = Math.floor(Math.random() * 8)
     canv.className = "page c#{rand+1}"
     prev = rand
     _updateUrls(rword)
+
+  _loadFromHash = ->
+    if isInWords(hash)
+      _next(hash)
+    else
+      _next(_getWord())
+
+  isInWords = (hash) ->
+    for i, val of words
+      if val is hash
+        return true
+
+    return false
 
   _bindEvents = ->
     window.addEventListener("keydown", _checkDownKeyPressed, false)
@@ -153,11 +173,10 @@ S = do ->
   _checkKeyPressed = (e) ->
     k = e.keyCode
     if k in [37, 38, 39, 40]
-      _next()
+      _next(_getWord())
 
   _updateUrls = (rword) ->
     twitter = document.getElementById('twitter')
-
     twitterUrl = "https://twitter.com/intent/tweet?original_referer=#{encodeURIComponent(document.URL)}&text=#{twitter.dataset.text}&tw_p=tweetbutton&url=#{encodeURIComponent(document.URL)}&via=#{twitter.dataset.via}"
     twitter.href = twitterUrl
     document.location.hash = rword;
@@ -169,7 +188,7 @@ S = do ->
 
   init: ->
     _bindEvents()
-    _next()
+    _pageLoad()
     return
 
 S.init()
