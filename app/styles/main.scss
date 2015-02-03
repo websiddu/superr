@@ -1,0 +1,121 @@
+// bower:scss
+// endbower
+
+@import "animate";
+
+@mixin linear-gradient($direction, $color-stops...) {
+  background: nth(nth($color-stops, 1), 1);
+  background: -webkit-linear-gradient(legacy-direction($direction), $color-stops);
+  background: linear-gradient($direction, $color-stops);
+}
+
+$lightgray-dark: #E6E9ED;
+$lightgray-light: #F5F7FA;
+
+$mediumgray-dark: #AAB2BD;
+$mediumgray-light: #CCD1D9;
+
+$darkgray-dark: #434A54;
+$darkgray-light: #656D78;
+
+$c11: #D770AD;
+$c12: #EC87C0;
+
+$c21: #4A89DC;
+$c22: #5D9CEC;
+
+$c31: #3BAFDA;
+$c32: #4FC1E9;
+
+$c41: #37BC9B;
+$c42: #48CFAD;
+
+$c51: #8CC152;
+$c52: #A0D468;
+
+$c61: #F6BB42;
+$c62: #FFCE54;
+
+$c71: #E9573F;
+$c72: #FC6E51;
+
+$c81: #DA4453;
+$c82: #ED5565;
+
+$c91: #967ADC;
+$c92: #AC92EC;
+
+body {
+  font-family: "Source Sans Pro", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  color: #43434a;
+  padding: 0;
+  margin: 0;
+}
+
+.page {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: #ddd;
+  padding: 0;
+  margin: 0;
+  opacity: 1;
+  -webkit-transition: all 0.2s;
+  transition: all 0.2s ease-in;
+
+  &.o0 {
+    opacity: 0.6;
+    transition: all 0.2s ease-out;
+  }
+
+  &.c1 {
+    background: linear-gradient(to right, $c11, $c12);
+  }
+  &.c2 {
+    background: linear-gradient(to right, $c21, $c22);
+  }
+  &.c3 {
+    background: linear-gradient(to right, $c31, $c32);
+  }
+  &.c4 {
+    background: linear-gradient(to right, $c41, $c42);
+  }
+  &.c5 {
+    background: linear-gradient(to right, $c51, $c52);
+  }
+  &.c6 {
+    background: linear-gradient(to right, $c61, $c62);
+  }
+  &.c7 {
+    background: linear-gradient(to right, $c71, $c72);
+  }
+  &.c8 {
+    background: linear-gradient(to right, $c81, $c82);
+  }
+}
+
+h1 {
+  font-size: 120px;
+  font-weight: 300;
+  text-align: center;
+  margin: auto;
+  position: absolute;
+  top: 0; left: 0; bottom: 0; right: 0;
+  height: 120px;
+  line-height: 120px;
+  color: #fff;
+}
+
+.footer {
+  position: fixed;
+  bottom: 0;
+  right: 0;
+  left: 0;
+  height: 40px;
+  padding: 0 50px;
+  vertical-align: middle;
+  line-height: 40px;
+  text-align: right;
+}
